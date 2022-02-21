@@ -14,7 +14,7 @@ const sensorsInfo = {
     colorLight: 'HSL(332, 70%, 90%)',
     colorDark: 'HSL(332, 70%, 30%)'
   },
-  RFIDSensor: {
+  stoveSensor: {
     color: 'HSL(4, 100%, 60%)',
     colorLight: 'HSL(4, 100%, 96%)',
     colorDark: 'HSL(4, 100%, 46%)'
@@ -32,12 +32,6 @@ const sensorsInfo = {
   led: {
     color: 'HSL(336, 87%, 52%)'
   },
-  hvacStatus: {
-    color: 'HSL(151, 51%, 42%)'
-  },
-  hvacRoom: {
-    color: 'HSL(276, 87%, 52%)'
-  }
 }
 
 export default sensorsInfo

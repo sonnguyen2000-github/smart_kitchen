@@ -8,6 +8,7 @@ const initialState = {
   refreshError: null,
   lightDetailsError: null,
   windowBlindsDetailsError: null,
+  stoveDetailsError: null,
   updateError: null,
   updating: 0
 }
@@ -25,7 +26,7 @@ const fetchSensorsSuccess = (state, action) => {
     temperatureSensors: action.sensors.temperatureSensors,
     windowSensors: action.sensors.windowSensors,
     windowBlinds: action.sensors.windowBlinds,
-    RFIDSensors: action.sensors.RFIDSensors,
+    stoveSensors: action.sensors.stoveSensors,
     smokeSensors: action.sensors.smokeSensors,
     lights: action.sensors.lights
   }
@@ -76,7 +77,7 @@ const refreshSensorsSuccess = (state, action) => {
     temperatureSensors: action.sensors.temperatureSensors,
     windowSensors: action.sensors.windowSensors,
     windowBlinds: action.sensors.windowBlinds,
-    RFIDSensors: action.sensors.RFIDSensors,
+    stoveSensors: action.sensors.stoveSensors,
     smokeSensors: action.sensors.smokeSensors,
     lights: action.sensors.lights
   }
@@ -137,6 +138,26 @@ const changeWindowBlindsSensorDetailsFail = (state, action) => {
   }
 }
 
+const changeStoveSensorDetailsStart = (state, action) => {
+  return {
+    ...state,
+    stoveDetailsError: null
+  }
+}
+
+const changeStoveSensorDetailsSuccess = (state, action) => {
+  return {
+    ...state
+  }
+}
+
+const changeStoveSensorDetailsFail = (state, action) => {
+  return {
+    ...state,
+    stoveDetailsError: action.error
+  }
+}
+
 export default function sensor (state = initialState, action) {
   switch (action.type) {
     case actionTypes.SENSORS_FETCH_START:
@@ -173,6 +194,13 @@ export default function sensor (state = initialState, action) {
       return changeWindowBlindsSensorDetailsSuccess(state, action)
     case actionTypes.SENSOR_WINDOW_BLINDS_CHANGE_FAIL:
       return changeWindowBlindsSensorDetailsFail(state, action)
+    
+    case actionTypes.SENSOR_STOVE_CHANGE_START:
+      return changeStoveSensorDetailsStart(state, action)
+    case actionTypes.SENSOR_STOVE_CHANGE_SUCCESS:
+      return changeStoveSensorDetailsSuccess(state, action)
+    case actionTypes.SENSOR_STOVE_CHANGE_FAIL:
+      return changeStoveSensorDetailsFail(state, action)
 
     default:
       return state

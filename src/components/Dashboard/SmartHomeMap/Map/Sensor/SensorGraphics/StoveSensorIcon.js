@@ -8,7 +8,7 @@ const useStyles = makeStyles((props) => ({
   }
 }))
 
-export default function RFIDSensorInner () {
+export default function StoveSensorInner () {
   const classes = useStyles()
   return <MemoryIcon className={classes.size} />
 }

@@ -138,3 +138,28 @@ export function changeWindowBlindsSensorDetailsFail (error) {
   }
 }
 
+export function changeStoveSensorDetails (stoveSensorDetails) {
+  return {
+    type: actionTypes.SENSOR_STOVE_CHANGE_ACTION,
+    stoveSensorDetails
+  }
+}
+
+export function changeStoveSensorDetailsStart () {
+  return {
+    type: actionTypes.SENSOR_STOVE_CHANGE_START
+  }
+}
+
+export function changeStoveSensorDetailsSuccess () {
+  return {
+    type: actionTypes.SENSOR_STOVE_CHANGE_SUCCESS
+  }
+}
+
+export function changeStoveSensorDetailsFail (error) {
+  return {
+    type: actionTypes.SENSOR_STOVE_CHANGE_FAIL,
+    error
+  }
+}

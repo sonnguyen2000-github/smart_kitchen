@@ -5,6 +5,7 @@ import {
   refreshSensors,
   changeLightDetails,
   changeWindowBlindsDetails,
+  changeStoveDetails,
 } from '../../api/sensor'
 
 const formatValue = value => (value / 10).toFixed(1)
@@ -37,7 +38,7 @@ export function * updateSensorsSaga (action) {
 export function * refreshSensorsSaga () {
   yield put(actions.refreshSensorsStart())
   while (true) {
-    yield delay(5000)
+    yield delay(500)
     try {
       const sensors = yield call(refreshSensors)
       //sensors.temperatureSensors = changeSensorTemperatureValueFormat(sensors.temperatureSensors)
@@ -66,5 +67,15 @@ export function * changeWindowBlindsSensorDetailsSaga (action) {
     yield put(actions.changeWindowBlindsSensorDetailsSuccess())
   } catch (error) {
     yield put(actions.changeWindowBlindsSensorDetailsFail(error))
+  }
+}
+
+export function * changeStoveSensorDetailsSaga (action) {
+  yield put(actions.changeStoveSensorDetailsStart())
+  try {
+    yield call(changeStoveDetails, action.stoveSensorDetails)
+    yield put(actions.changeStoveSensorDetailsSuccess())
+  } catch (error) {
+    yield put(actions.changeStoveSensorDetailsFail(error))
   }
 }

@@ -12,10 +12,17 @@
   "sensor-remove-cancel": "Anuluj",
   "sensor-remove-confirm": "Potwierdź",
 
+  "stove-power": "Power",
+  "stove-timer": "Timer",
+  "watt": "Watt",
+  "stove-level": "Level",
+  "stove-uptime": "Uptime",
+  "stove-mode": "Mode",
+
   "light-hue": "Odcień",
   "light-saturation": "Nasycenie",
   "light-value": "Natężenie",
-  "RFID-last-action": "Ostatnia akcja:",
+  "stove-last-action": "Ostatnia akcja:",
   "smoke-detected": "WYKRYTO DYM",
   "smoke-not-detected": "Brak dymu",
   "window-open": "Okno otwarte",
@@ -28,17 +35,16 @@
   "window-sensor-desc": "Okno",
   "window-blind-name": "Rolety",
   "window-blind-desc": "Rolety",
-  "RFID-sensor-name": "Czujnik RFID",
-  "RFID-sensor-desc": "RFID",
+  "stove-sensor-name": "Czujnik",
+  "stove-sensor-desc": "Czujnik",
   "smoke-sensor-name": "Czujnik dymu",
   "smoke-sensor-desc": "Czujnik dymu",
   "RGB-light-name": "Światło RGB",
   "RGB-light-desc": "Światło",
-  "hvac-status-name": "Status HVAC",
-  "hvac-room-name": "Pokój HVAC",
 
   "sensor-add-failed": "Czujnik {{id}} nie został dodany.",
   "sensor-remove-failed": "Błąd przy usuwaniu czujnika {{id}}",
 
-  "sensor-detail-confirm": "Ustaw"
+  "sensor-detail-confirm": "Ustaw",
+  "sensor-detail-hide": "Hide"
 }

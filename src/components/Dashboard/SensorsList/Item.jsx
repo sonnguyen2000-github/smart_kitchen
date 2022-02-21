@@ -17,7 +17,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 
 import { onListClick, onMapClick } from '../../../data/actions/mapListCommunicationActions.js'
 import LightItemInfo from './ItemInfo/LightItemInfo'
-import RFIDSensorItemInfo from './ItemInfo/RFIDSensorItemInfo'
+import StoveSensorItemInfo from './ItemInfo/StoveSensorItemInfo'
 import SmokeSensorItemInfo from './ItemInfo/SmokeSensorItemInfo'
 import TemperatureSensorItemInfo from './ItemInfo/TemperatureSensorItemInfo'
 import WindowBlindsItemInfo from './ItemInfo/WindowBlindsItemInfo'
@@ -27,6 +27,7 @@ import { ItemDisplayedName } from './helpers'
 
 import LightItemDetails from './ItemDetails/LightItemDetails'
 import WindowBlindsItemDetails from './ItemDetails/WindowBlindsItemDetails'
+import StoveItemDetails from './ItemDetails/StoveItemDetails.js'
 
 import { drawSensorGraphicComponent } from '../SmartHomeMap/Map/Sensor/SensorGraphicComponent.jsx'
 import { convertHsvToHsl } from '../SmartHomeMap/Map/Sensor/helpers'
@@ -121,7 +122,7 @@ function drawItemInfo (sensorType, sensorData, classes, handleRemoveClick) {
     TEMPERATURE_SENSOR: <TemperatureSensorItemInfo sensorData={sensorData} classes={classes} handleRemoveClick={handleRemoveClick} />,
     windowSensor: <WindowSensorItemInfo sensorData={sensorData} classes={classes} handleRemoveClick={handleRemoveClick} />,
     windowBlind: <WindowBlindsItemInfo sensorData={sensorData} classes={classes} handleRemoveClick={handleRemoveClick} />,
-    RFIDSensor: <RFIDSensorItemInfo sensorData={sensorData} classes={classes} handleRemoveClick={handleRemoveClick} />,
+    stoveSensor: <StoveSensorItemInfo sensorData={sensorData} classes={classes} handleRemoveClick={handleRemoveClick} />,
     smokeSensor: <SmokeSensorItemInfo sensorData={sensorData} classes={classes} handleRemoveClick={handleRemoveClick} />,
     LED_CONTROLLER: <LightItemInfo sensorData={sensorData} classes={classes} handleRemoveClick={handleRemoveClick} />
   }
@@ -131,7 +132,8 @@ function drawItemInfo (sensorType, sensorData, classes, handleRemoveClick) {
 function drawExpansionPanelDetails (sensorType, sensorData, handleChangeExpanded) {
   const itemDetails = {
     windowBlind: <WindowBlindsItemDetails sensorData={sensorData} handleChangeExpanded={handleChangeExpanded} />,
-    LED_CONTROLLER: <LightItemDetails sensorData={sensorData} handleChangeExpanded={handleChangeExpanded} />
+    LED_CONTROLLER: <LightItemDetails sensorData={sensorData} handleChangeExpanded={handleChangeExpanded} />,
+    stoveSensor: <StoveItemDetails sensorData={sensorData} handleChangeExpanded={handleChangeExpanded} />
   }
 
   if (itemDetails[sensorType]) {
@@ -144,7 +146,7 @@ function drawExpansionPanelDetails (sensorType, sensorData, handleChangeExpanded
 }
 
 function isSensorEditable (sensorType, isOnMap) {
-  return (sensorType === 'LED_CONTROLLER') || (sensorType === 'windowBlind' && isOnMap)
+  return (sensorType === 'LED_CONTROLLER') || (sensorType === 'windowBlind' && isOnMap) || (sensorType === 'stoveSensor')
 }
 
 const Item = ({ sensorData, isOnMap, handleRemoveClick, expanded, handleChangeExpanded }) => {

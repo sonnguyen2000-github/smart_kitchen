@@ -12,10 +12,17 @@
   "sensor-remove-cancel": "Cancel",
   "sensor-remove-confirm": "Ok",
 
+  "stove-power": "Power",
+  "stove-timer": "Timer",
+  "watt": "Power consumption",
+  "stove-level": "Level",
+  "stove-uptime": "Uptime",
+  "stove-mode": "Mode",
+
   "light-hue": "Hue",
   "light-saturation": "Saturation",
   "light-value": "Value",
-  "RFID-last-action": "Last action:",
+  "stove-last-action": "Last action:",
   "smoke-detected": "SMOKE DETECTED",
   "smoke-not-detected": "No smoke",
   "window-open": "Open",
@@ -28,17 +35,16 @@
   "window-sensor-desc": "Window",
   "window-blind-name": "Window blind",
   "window-blind-desc": "Window blind",
-  "RFID-sensor-name": "RFID sensor",
-  "RFID-sensor-desc": "RFID",
+  "stove-sensor-name": "Stove",
+  "stove-sensor-desc": "Stove",
   "smoke-sensor-name": "Smoke sensor",
   "smoke-sensor-desc": "Smoke sensor",
   "RGB-light-name": "RGB light",
   "RGB-light-desc": "Light",
-  "hvac-status-name": "HVAC status",
-  "hvac-room-name": "HVAC room",
 
   "sensor-add-failed": "Sensor {{id}} could not be added.",
   "sensor-remove-failed": "Error during removing sensor {{id}}",
 
-  "sensor-detail-confirm": "Confirm"
+  "sensor-detail-confirm": "Confirm",
+  "sensor-detail-hide": "Hide"
 }

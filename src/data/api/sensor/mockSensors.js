@@ -45,10 +45,7 @@ const mockSensors = {
       id: 13,
       type: 'TEMPERATURE_SENSOR',
       value: 21,
-      mapPosition: {
-        x: 35,
-        y: 77
-      }
+      mapPosition: undefined
     }
   ],
   windowSensors: [
@@ -65,16 +62,22 @@ const mockSensors = {
       position: 90
     }
   ],
-  RFIDSensors: [
+  stoveSensors: [
     {
       id: 4,
-      type: 'RFIDSensor',
-      lastTag: {
-        id: 1,
-        type: 'RFIDTag',
-        timestamp: 1584470245
-      }
-    }
+      type: 'stoveSensor',
+      timer: { 
+        hour: 0, 
+        min: 1  
+      }, 
+      temperature: 150, 
+      watt: 1300, 
+      uptime: 0, 
+      power: true, 
+      level: 4, 
+      mode: "Hot Pot", 
+      overheat: true
+    },
   ],
   smokeSensors: [
     {
