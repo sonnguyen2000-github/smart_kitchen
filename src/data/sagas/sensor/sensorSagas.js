@@ -38,7 +38,7 @@ export function * updateSensorsSaga (action) {
 export function * refreshSensorsSaga () {
   yield put(actions.refreshSensorsStart())
   while (true) {
-    yield delay(500)
+    yield delay(1000)
     try {
       const sensors = yield call(refreshSensors)
       //sensors.temperatureSensors = changeSensorTemperatureValueFormat(sensors.temperatureSensors)
