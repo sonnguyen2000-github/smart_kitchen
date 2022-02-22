@@ -43,6 +43,9 @@ export default function StoveSensorItemInfo ({ sensorData, classes, handleRemove
           setState(values => {
             const newState = {
               ...values,
+              timer:{
+                hour:0,min:0 
+              },
               type: 0,
               power: true,
               level: 7,
@@ -99,7 +102,7 @@ export default function StoveSensorItemInfo ({ sensorData, classes, handleRemove
               ...values,
               type: 0,
               mode: recvData.mode,
-              level: recvData.mode == "Warm" ? 1 : values.level
+              level: recvData.mode == "Warm" ? 1 : 7
             }
             delete newState._id
             dispatch(changeStoveSensorDetails(newState))
@@ -170,7 +173,7 @@ export default function StoveSensorItemInfo ({ sensorData, classes, handleRemove
   }
 
   useEffect(() => {
-    if (!state.power) return
+    // if (!state.power) return
     if (useTimer && state.timer.hour == 0 && state.timer.min == 0 && state.timer.second == 0) {
       var message = {
         timer: roundTimer(state.timer),
@@ -201,8 +204,8 @@ export default function StoveSensorItemInfo ({ sensorData, classes, handleRemove
       setUseTimer(false)
     }
     const interval = setInterval(() => {
-      const nextTemperature = state.power ? getRandomValue(temperatureLevel[state.level], temperatureLevel[state.level + 1]) : 0
-      const nextWatt = state.power ? getRandomValue(wattLevel[state.level], wattLevel[state.level + 1]) : 0
+      const nextTemperature = state.power ? getRandomValue(temperatureLevel[state.level], temperatureLevel[Math.min(state.level + 1, temperatureLevel.length-1)]) : 0
+      const nextWatt = state.power ? getRandomValue(wattLevel[state.level], wattLevel[Math.min(state.level + 1, wattLevel.length-1)]) : 0
       const nextOverheat = state.power ? (getRandomValue(0, 1) == 0 ? false : true) : false
       var message = {
         timer: roundTimer(state.timer),
@@ -233,10 +236,10 @@ export default function StoveSensorItemInfo ({ sensorData, classes, handleRemove
           temperature: nextTemperature,
           watt: nextWatt,
           uptime: values.uptime + 1,
-          timer: useTimer ? decreaseTimer(values.timer) : values.timer
+          timer: useTimer ? decreaseTimer(values.timer) : {hour:0,min:0}
         }
       })
-    }, 1000)
+    }, 2000)
     return () => {
       clearInterval(interval)
     }
