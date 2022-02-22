@@ -247,7 +247,7 @@ export default function StoveSensorItemInfo ({ sensorData, classes, handleRemove
       {t('dashboard:stove-power')}: {state.power ? "ON" : "OFF"} <br />
       {state.power && (
         <>
-          {`${t('dashboard:stove-timer')}: ${state.timer.hour}h ${state.timer.min}m`} <br />
+          {`${t('dashboard:stove-timer')}: ${roundTimer(state.timer).hour}h ${roundTimer(state.timer).min}m`} <br />
           {`${t('dashboard:temperature')}: ${state.temperature}°C`} <br /> 
           {`${t('dashboard:watt')}: ${state.watt}W`} <br /> 
           {`${t('dashboard:stove-uptime')}: ${state.uptime}s`} <br /> 
