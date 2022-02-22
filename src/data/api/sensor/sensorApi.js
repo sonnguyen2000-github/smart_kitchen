@@ -34,6 +34,27 @@ export function * getSensors () {
         overheat: !!obj.overheat ? obj.overheat : false
       })
     }
+    else if (obj.sensorType == "TEMPERATURE_SENSOR") {
+      ret.temperatureSensors.push({
+        ...obj,
+        type: "TEMPERATURE_SENSOR",
+        value: !!obj.value ? obj.value : 0
+      })
+    }
+    else if (obj.sensorType == "windowSensor") {
+      ret.temperatureSensors.push({
+        ...obj,
+        type: "windowSensor",
+        status: !!obj.status ? obj.status : "close"
+      })
+    }
+    else if (obj.sensorType == "smokeSensor") {
+      ret.temperatureSensors.push({
+        ...obj,
+        type: "smokeSensor",
+        isSmokeDetected: !!obj.isSmokeDetected ? obj.isSmokeDetected : false
+      })
+    }
   }
   return ret
   //return mockSensors
@@ -67,9 +88,30 @@ export function * refreshSensors () {
         watt: !!obj.watt ? obj.watt : 0, 
         uptime: !!obj.uptime ? obj.uptime : 0, 
         power: !!obj.power ? obj.power : false, 
-        level: !!obj.level ? obj.level : 0, 
-        mode: !!obj.mode ? obj.mode : "None", 
+        level: !!obj.level ? obj.level : 7, 
+        mode: !!obj.mode ? obj.mode : "Hot Pot", 
         overheat: !!obj.overheat ? obj.overheat : false
+      })
+    }
+    else if (obj.sensorType == "TEMPERATURE_SENSOR") {
+      ret.temperatureSensors.push({
+        ...obj,
+        type: "TEMPERATURE_SENSOR",
+        value: !!obj.value ? obj.value : 0
+      })
+    }
+    else if (obj.sensorType == "windowSensor") {
+      ret.temperatureSensors.push({
+        ...obj,
+        type: "windowSensor",
+        status: !!obj.status ? obj.status : "close"
+      })
+    }
+    else if (obj.sensorType == "smokeSensor") {
+      ret.temperatureSensors.push({
+        ...obj,
+        type: "smokeSensor",
+        isSmokeDetected: !!obj.isSmokeDetected ? obj.isSmokeDetected : false
       })
     }
   }
@@ -94,7 +136,6 @@ export function * changeWindowBlindsDetails (windowBlindsSensorDetails) {
 }
 
 export function * changeStoveDetails (stoveSensorDetails) {
-  //alert(JSON.stringify(stoveSensorDetails))
   const config = { headers: { 'Content-Type': 'application/json', 'Authorization': 'secret' } }
   const res = yield axios.post(`https://it4735-group6-server.herokuapp.com/api/v1/admin/device`, {
     type: "write",
